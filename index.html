@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trailer Towing Capacity & Tongue Weight Calculator — GVWR & GCWR — Accurate Material Estimator</title>
+  <meta name="description" content="Calculate exact real-world towing capacity, truck payload limits, GCWR combined weight, and 10% to 15% trailer tongue weight.">
+  <link rel="canonical" href="https://sebiglesias.com.ar/trailer-towing-capacity-calculator/">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Trailer Towing Capacity & Tongue Weight Calculator — GVWR & GCWR">
+  <meta property="og:description" content="Calculate exact real-world towing capacity, truck payload limits, GCWR combined weight, and 10% to 15% trailer tongue weight.">
+  <meta property="og:url" content="https://sebiglesias.com.ar/trailer-towing-capacity-calculator/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BNDBQP0W7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2BNDBQP0W7');
+  </script>
+
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-3381238987477190">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Trailer Towing Capacity & Tongue Weight Calculator \u2014 GVWR & GCWR",
+    "url": "https://sebiglesias.com.ar/trailer-towing-capacity-calculator/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "description": "Calculate exact real-world towing capacity, truck payload limits, GCWR combined weight, and 10% to 15% trailer tongue weight.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does a truck run out of payload capacity before reaching its maximum tow rating?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Auto manufacturers advertise maximum towing ratings assuming an empty base-model truck with only a 150-lb driver. In real life, your trailer's tongue weight (10% to 15% of trailer weight) sits directly in the truck bed, consuming your truck's payload capacity. Adding 4 passengers, luggage, and a heavy tongue weight almost always exceeds the truck's Gross Vehicle Weight Rating (GVWR) long before hitting the advertised tow limit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the proper tongue weight percentage for safe towing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For standard bumper-pull travel trailers and cargo haulers, tongue weight must be between **10% and 15% of the total loaded trailer weight** (12% is ideal). If tongue weight is below 10%, the trailer will violently sway and fishtail at highway speeds. If tongue weight exceeds 15%, the rear suspension sags, lifting weight off the front steering tires."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is a Weight Distribution Hitch (WDH) required?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most Class IV truck receiver hitches require a Weight Distribution Hitch for any trailer weighing over 5,000 lbs. A WDH uses spring bars to leverage and transfer a portion of the heavy tongue weight forward to the truck's front steering axle and back to the trailer's axles, keeping the vehicle completely level."
+        }
+      }
+    ]
+  }
+]
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">🚗 SAE J2807 Towing Safety Standards</div>
+      <h1>Trailer Towing Capacity & Tongue Weight Calculator</h1>
+      <p class="subtitle">Calculate real-world safe towing capacity based on truck payload, GVWR, GCWR, and 10%–15% tongue weight.</p>
+    </header>
+
+    <!-- AdSense Top Banner -->
+    <div style="text-align:center; margin: 16px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <main class="calc-grid">
+      <!-- Inputs Card -->
+      <form class="card" id="trailer-towing-capacity-calculator-form" onsubmit="event.preventDefault();">
+        <h2>📐 Truck Ratings & Trailer Weight</h2>
+        
+        <div class="input-row">
+          <div class="form-group">
+            <label for="truckGvwr">Truck GVWR <span class="hint">On door jamb sticker</span></label>
+            <div class="input-wrap">
+              <input type="number" id="truckGvwr" step="100" min="4000" value="7100" required>
+              <span class="input-suffix">lbs</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="truckCurb">Truck Empty Curb Weight</label>
+            <div class="input-wrap">
+              <input type="number" id="truckCurb" step="100" min="3000" value="5300" required>
+              <span class="input-suffix">lbs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="form-group">
+            <label for="truckGcwr">Truck GCWR <span class="hint">Gross Combined Weight Rating</span></label>
+            <div class="input-wrap">
+              <input type="number" id="truckGcwr" step="500" min="8000" value="15000" required>
+              <span class="input-suffix">lbs</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cargoPassengers">Passengers & Bed Cargo Weight</label>
+            <div class="input-wrap">
+              <input type="number" id="cargoPassengers" step="50" min="150" value="650" required>
+              <span class="input-suffix">lbs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="form-group">
+            <label for="trailerWeight">Loaded Trailer Weight (GVW)</label>
+            <div class="input-wrap">
+              <input type="number" id="trailerWeight" step="250" min="1000" value="7000" required>
+              <span class="input-suffix">lbs</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="hitchType">Hitch Style</label>
+            <select id="hitchType">
+              <option value="bumper" selected>Bumper Pull / Receiver (10%–15% Tongue)</option>
+              <option value="fifth">5th Wheel / Gooseneck (15%–25% Pin Weight)</option>
+            </select>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Results Card -->
+      <div class="card">
+        <h2>🎯 Towing Safety & Capacity Verdict</h2>
+        
+        <div class="result-hero">
+          <div class="result-label">Towing Safety Status</div>
+          <div class="result-number" id="towingVerdict" style="font-size:2.2rem; color:#4ade80;">SAFE TO TOW</div>
+          <div class="result-label" style="color:#ffffff;" id="limitingFactor">Payload Margin: 310 lbs Remaining</div>
+          <div style="font-size:0.95rem; color:#bfdbfe; margin-top:6px;" id="maxTrailerPossible">Max Safe Trailer: 8,400 lbs</div>
+        </div>
+
+        <div class="sub-hero-grid">
+          <div class="sub-hero-col">
+            <div class="sub-hero-label">Tongue Weight (12%)</div>
+            <div class="sub-hero-val" id="tongueWeight">840 lbs</div>
+            <div class="sub-hero-sub">Pushes down on truck hitch</div>
+          </div>
+          <div class="sub-hero-col">
+            <div class="sub-hero-label">Available Truck Payload</div>
+            <div class="sub-hero-val" id="availablePayload">1,150 lbs</div>
+            <div class="sub-hero-sub">Before hitching trailer</div>
+          </div>
+        </div>
+
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-desc">Total Combined Weight</div>
+            <div class="spec-val" id="totalCombined">12,950 lbs</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">GCWR Margin</div>
+            <div class="spec-val" id="gcwrMargin">+2,050 lbs Under</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">Weight Distribution Hitch</div>
+            <div class="spec-val" id="wdhRequired">Required (Over 5,000 lbs)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">Trailer Brake Controller</div>
+            <div class="spec-val">Mandatory (Over 3,000 lbs)</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Amazon Supplies Box -->
+    <section class="supplies-card">
+      <h3>🛠️ Recommended Tools, Hardware & Building Supplies</h3>
+      <div class="supplies-grid">
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">CURT 17063 MV Round Bar Weight Distribution Hitch (10,000 lb)</div>
+            <div class="supply-desc">Integrated sway control bars level truck and trailer, preventing dangerous highway fish-tailing.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=curt+weight+distribution+hitch+sway+control&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Sherline LM 2000 Trailer Tongue Weight Scale</div>
+            <div class="supply-desc">Hydraulic precision gauge measures exact tongue weight at the coupler to prevent dangerous rear-end fishtailing.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=sherline+trailer+tongue+weight+scale&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">CURT 51180 Echo Mobile Smartphone Wireless Trailer Brake Controller</div>
+            <div class="supply-desc">Plugs between 7-way vehicle socket and trailer, controlling proportional electric brakes via Bluetooth app.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=curt+echo+mobile+trailer+brake+controller&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Weigh Safe WS6-2 Drop Hitch with Built-in Hydraulic Scale</div>
+            <div class="supply-desc">Aircraft grade aluminum drop hitch continuously displays tongue weight on an integrated dial.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=weigh+safe+drop+hitch+scale&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+      </div>
+      <p style="font-size:0.75rem; color:#94a3b8; margin-top:14px; margin-bottom:0; text-align:center;">
+        ⚖️ <em>Affiliate Notice: As an Amazon Associate, this site earns from qualifying purchases at no additional cost to you. We strictly link to trade-grade construction tools, hardware, and safety materials.</em>
+      </p>
+    </section>
+
+    <!-- FAQ Section for SEO -->
+    <section class="faq-section">
+      <h2 style="font-size:1.35rem; color:#ffffff; margin-bottom:16px;">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">Why does a truck run out of payload capacity before reaching its maximum tow rating?</div>
+        <div class="faq-a">Auto manufacturers advertise maximum towing ratings assuming an empty base-model truck with only a 150-lb driver. In real life, your trailer's tongue weight (10% to 15% of trailer weight) sits directly in the truck bed, consuming your truck's payload capacity. Adding 4 passengers, luggage, and a heavy tongue weight almost always exceeds the truck's Gross Vehicle Weight Rating (GVWR) long before hitting the advertised tow limit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the proper tongue weight percentage for safe towing?</div>
+        <div class="faq-a">For standard bumper-pull travel trailers and cargo haulers, tongue weight must be between **10% and 15% of the total loaded trailer weight** (12% is ideal). If tongue weight is below 10%, the trailer will violently sway and fishtail at highway speeds. If tongue weight exceeds 15%, the rear suspension sags, lifting weight off the front steering tires.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">When is a Weight Distribution Hitch (WDH) required?</div>
+        <div class="faq-a">Most Class IV truck receiver hitches require a Weight Distribution Hitch for any trailer weighing over 5,000 lbs. A WDH uses spring bars to leverage and transfer a portion of the heavy tongue weight forward to the truck's front steering axle and back to the trailer's axles, keeping the vehicle completely level.</div>
+      </div>
+    </section>
+
+    <!-- Bottom AdSense Banner -->
+    <div style="text-align:center; margin: 32px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <footer>
+      <p>© 2026 <a href="https://sebiglesias.com.ar/">sebiglesias.com.ar</a> · Trailer Towing Capacity & Tongue Weight Calculator — GVWR & GCWR. Educational and trade reference tool.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
